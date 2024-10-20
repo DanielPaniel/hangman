@@ -1,0 +1,62 @@
+:root {
+    --hangman-font-size--m: 1rem;
+    --hangman-font-size--l: 3rem;
+}
+body {
+    display: grid;
+    gap: 2rem;
+}
+.hangman_man {
+    color: #000;
+}
+.hangman_man svg {
+    block-size: 20vh;
+    display: block;
+    inline-size: auto;
+    margin: auto;
+}
+.hangman_man path {
+    display: none;
+}
+
+h1,
+#hangmanResult {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-size: var(--hangman-font-size--l);
+    text-align: center;
+}
+h1 {
+    font-size: var(--hangman-font-size--m);
+}
+
+#hangmanSlots {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-size: var(--hangman-font-size--l);
+    display: flex;
+    flex-flow: row wrap;
+    gap: .1em;
+    margin: auto;
+}
+#hangmanSlots span {
+    display: inline-block;
+    min-width: 1em;
+    text-align: center;
+}
+
+#hangmanKeyboard {
+    display: grid;
+    font-size: var(--hangman-font-size--m);
+    grid-template-columns: repeat(6, auto);
+    gap: .25em;
+
+}
+#hangmanKeyboard button {
+    font-size: 1em;
+    padding: .5em;
+    text-transform: uppercase;
+}
+#hangmanKeyboard button:disabled {
+    opacity: .5;
+}

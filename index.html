@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Hangman</h1>
+
+    <div class="hangman_man">
+        <svg width="42" height="54" viewBox="0 0 42 54" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path class="hangman--1" d="M32 54C32 45.1634 24.8366 38 16 38C7.16344 38 0 45.1634 0 54H32Z"/>
+            <path class="hangman--2" d="M14 0H18V40H14V0Z"/>
+            <path class="hangman--3" d="M14 4L14 9.61651e-07L36 0V4L14 4Z"/>
+            <path class="hangman--4" d="M16.8284 15.5563L14 12.7279L26.7279 0L29.5563 2.82843L16.8284 15.5563Z"/>
+            <path class="hangman--5" d="M36 8L32 8L32 4L36 4L36 8Z"/>
+            <path class="hangman--6" d="M39 12C39 14.7614 36.7614 17 34 17C31.2386 17 29 14.7614 29 12C29 9.23858 31.2386 7 34 7C36.7614 7 39 9.23858 39 12Z"/>
+            <path class="hangman--7" d="M36 30H32L32 16L36 16L36 30Z"/>
+            <path class="hangman--8" d="M34 17C29.5817 17 26 20.5817 26 25H30C30 22.7909 31.7909 21 34 21V17Z"/>
+            <path class="hangman--9" d="M34 17C38.4183 17 42 20.5817 42 25H38C38 22.7909 36.2091 21 34 21V17Z"/>
+            <path class="hangman--10" d="M34 29C29.5817 29 26 32.5817 26 37H30C30 34.7909 31.7909 33 34 33V29Z"/>
+            <path class="hangman--11" d="M34 29C38.4183 29 42 32.5817 42 37H38C38 34.7909 36.2091 33 34 33V29Z"/>
+        </svg>            
+    </div>
+    <div id="hangmanResult"></div>
+    <div id="hangmanSlots"></div>
+    <div id="hangmanKeyboard"></div>
+    <div id="hangmanCounter"></div>
+    
+
+    <template id="hangmanSlot">
+        <span data-letter="">_</div>
+    </template>
+
+    <template id="hangmanButton">
+        <button></button>
+    </template>
+
+    <template id="hangmanWin">
+        <div>Hurra!</div>
+    </template>
+
+    <template id="hangmanLose">
+        <div>Död!</div>
+    </template>
+
+    <button onclick="setup();">Restart</button>
+    <button onclick="openDialog();">Eget ord</button>
+
+    <dialog>
+        <form method="dialog">
+            <input type="text" id="customWordInput" />
+            <button type="submit" value="submit">Starta</button>
+            <button value="close">Avbryt</button>
+        </form>
+    </dialog>
+
+    <script src="index.js"></script>
+</body>
+</html>

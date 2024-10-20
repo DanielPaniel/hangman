@@ -1,0 +1,32 @@
+
+//    - Välja en ordlista eller eget ord
+    - Validera att custom ord är bokstäver
+    - på avbryt blir det tomt
+
+- Kunna gissa på tangentbord - lyssnare på keydown
+
+
+
+
+
+Vad är vad
+
+Hangmanen
+- Ändra attr för att toggla delar
+- Vinnar-fras
+- Förlorar-fras
+- Antal gissningar
+- In: Om rätt el fel
+
+Keyboard
+- Lista ut Knappar
+- Håll koll på disablingar
+- Ut: gissning
+
+Hemligt ord
+- Vilket är ordet
+- Input
+- Ta emot en gissning
+- Validera
+- Toggla input/presentation
+- Ut: Rätt el fel
