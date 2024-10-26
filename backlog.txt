@@ -1,29 +1,31 @@
+- Få veta svaret?
+- tipsknapp ger en bokstav?
+- trist att få samma... -spara historik i localstorage?
 
-//    - Välja en ordlista eller eget ord
-    - Validera att custom ord är bokstäver
-    - på avbryt blir det tomt
-
+- alternativ är checkboxar - så kan man anv piltangenter och tabba förbi snabbt
+- Kunna gissa på hela ordet
 - Kunna gissa på tangentbord - lyssnare på keydown
-
 
 
 
 
 Vad är vad
 
-Hangmanen
+"Visualisering" - Hangmanen
 - Ändra attr för att toggla delar
 - Vinnar-fras
 - Förlorar-fras
 - Antal gissningar
 - In: Om rätt el fel
 
-Keyboard
+"Gissningsalternativ" - Keyboard
 - Lista ut Knappar
 - Håll koll på disablingar
 - Ut: gissning
+* Detta borde kanske bara vara checkboxar med en onchange?
 
-Hemligt ord
+
+"Svaret" - Hemligt ord
 - Vilket är ordet
 - Input
 - Ta emot en gissning

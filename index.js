@@ -1,4 +1,4 @@
-const wordlist = ["kaffe", "multiplikationstabell", "hund", "storstad", "bilfabrik", "planet", "skog", "apa", "salsa", "stenåldern"];
+const wordlist = ["kaffe", "multiplikationstabell", "hund", "storstad", "bilfabrik", "planet", "skog", "apa", "salsa", "stenåldern", "cykel", "blåmes", "utflykt", "gräsmatta","frukost", "simskola", "bok", "ål", "bord", "scenframträdande", "studsmatta", "tidning", "choklad", "chips", "popcorn", "sol", "quinoa", "polisbil", "brandstation", "räv", "björn", "utter"];
 const alphabet = `abcdefghijklmnopqrstuvwxyzåäö`;
 const maxGuesses = 11;
 let counter = 0;
@@ -6,40 +6,40 @@ let isGameOver = false;
 
 const dialog = document.querySelector("dialog");
 
-dialog.addEventListener("close", (event) => {
+dialog.addEventListener("close", () => {
     if (dialog.returnValue === "submit") {
         let value = dialog.querySelector("input").value;
-        customSetup(value);
+        if (customWordIsValid(value)) {
+            setup(value);
+        } else {
+            dialog.showModal();
+        }
     }
-    /**
-     * Kolla MDn där skicka dom värdet inne i dialog.close(mittVärde)
-     * om jag har formmethod dialog så sparas states i dialogen så den måste kansek nollas ibland?
-     * hur tar vi värdet från inputen?
-     * hur skickar jag värdet vidare?
-     */
 });
 
-setup();
+
+function customWordIsValid(word) {
+    let letters = [...word.toLowerCase()];
+    let valid = letters.length > 0;
+    letters.forEach((letter) => {
+        if (!alphabet.includes(letter)) {
+            valid = false;
+        }
+    });
+    return valid;
+}
+
+setup(selectWord());
 
 function openDialog() {
     dialog.querySelector("input").value = "";
     dialog.showModal();
 }
 
-function setup() {
+function setup(word) {
     reset();
     
     // setup
-    let word = selectWord();
-    createLetterSlots(word);
-    createButtons(alphabet);
-}
-
-function customSetup(word) {
-    reset();
-    
-    // setup
-//    let word = document.querySelector("#customWordInput").value;
     createLetterSlots(word);
     createButtons(alphabet);
 }
@@ -49,7 +49,6 @@ function reset() {
     counter = 0;
     document.querySelector("#hangmanResult").innerHTML = "";
     document.querySelector("#hangmanKeyboard").innerHTML = "";
-    document.querySelector("#hangmanCounter").innerHTML = "";
     document.querySelector("#hangmanSlots").innerHTML = "";
     let hangmanParts = document.querySelectorAll(".hangman_man path");
     hangmanParts.forEach((part) => {
@@ -95,7 +94,6 @@ function onGuess(event) {
 function countdown() {
     counter ++;
     document.querySelector(`path.hangman--${counter}`).style.display = "block"; 
-//    document.querySelector("#hangmanCounter").textContent = maxGuesses - counter;
 }
 
 function evaluateGame() {

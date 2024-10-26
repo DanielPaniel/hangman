@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <h1>Hangman</h1>
+    <h1>Hängman</h1>
 
     <div class="hangman_man">
         <svg width="42" height="54" viewBox="0 0 42 54" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -27,9 +27,7 @@
     </div>
     <div id="hangmanResult"></div>
     <div id="hangmanSlots"></div>
-    <div id="hangmanKeyboard"></div>
-    <div id="hangmanCounter"></div>
-    
+    <div id="hangmanKeyboard"></div>    
 
     <template id="hangmanSlot">
         <span data-letter="">_</div>
@@ -47,12 +45,12 @@
         <div>Död!</div>
     </template>
 
-    <button onclick="setup();">Restart</button>
+    <button onclick="setup(selectWord());">Nytt ord</button>
     <button onclick="openDialog();">Eget ord</button>
 
     <dialog>
         <form method="dialog">
-            <input type="text" id="customWordInput" />
+            <input autocomplete="off" type="text" id="customWordInput" />
             <button type="submit" value="submit">Starta</button>
             <button value="close">Avbryt</button>
         </form>
