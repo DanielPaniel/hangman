@@ -70,47 +70,51 @@ function createButtons(stringToArray) {
        let templateFragment = template.content.cloneNode(true);
        let button = templateFragment.querySelector("button");
        button.textContent = char.toLowerCase();
+       button.value = char.toLowerCase();
        button.addEventListener("click", onGuess);
        gameContainer.append(button);
    });
 }
 
+
 function onGuess(event) {
-    if (!isGameOver) {
-        let currentGuess = event.target.textContent;
-        let affectedSlots = document.querySelectorAll(`[data-letter=${currentGuess}]`);
-        if (affectedSlots.length > 0) {
-            affectedSlots.forEach((item) => {
-                item.textContent = currentGuess;
-            });        
-        } else {
-            countdown();
-        }
-        event.target.setAttribute("disabled", "");
-        evaluateGame();    
+    let currentGuess = event.target.value;
+    let affectedSlots = document.querySelectorAll(`[data-letter=${currentGuess}]`);
+    if (affectedSlots.length > 0) {
+        affectedSlots.forEach((item) => {
+            item.textContent = currentGuess;
+        });        
+    } else {
+        countdown();
     }
+    event.target.setAttribute("disabled", "");
+    evaluateGame();    
 }
 
 function countdown() {
-    counter ++;
-    document.querySelector(`path.hangman--${counter}`).style.display = "block"; 
+    if (!isGameOver) {
+        counter ++;
+        document.querySelector(`path.hangman--${counter}`).style.display = "block"; 
+    }
 }
 
 function evaluateGame() {
-    let feedbackTemplate;
-    let wordContent = document.querySelector("#hangmanSlots").textContent;
-
-    if (!wordContent.includes("_")) {
-        feedbackTemplate = document.querySelector("#hangmanWin");        
-    } else if (counter >= maxGuesses) {
-       feedbackTemplate = document.querySelector("#hangmanLose");
-    }
-
-    if (feedbackTemplate) {
-        isGameOver = true;
-        let templateFragment = feedbackTemplate.content.cloneNode(true);
-        let feedback = templateFragment.querySelector("div");
-        document.querySelector("#hangmanResult").append(feedback);
+    if (!isGameOver) {
+        let feedbackTemplate;
+        let wordContent = document.querySelector("#hangmanSlots").textContent;
+    
+        if (!wordContent.includes("_")) {
+            feedbackTemplate = document.querySelector("#hangmanWin");        
+        } else if (counter >= maxGuesses) {
+           feedbackTemplate = document.querySelector("#hangmanLose");
+        }
+    
+        if (feedbackTemplate) {
+            isGameOver = true;
+            let templateFragment = feedbackTemplate.content.cloneNode(true);
+            let feedback = templateFragment.querySelector("div");
+            document.querySelector("#hangmanResult").append(feedback);
+        }    
     }
 }
 
@@ -124,4 +128,20 @@ function createLetterSlots(stringToArray) {
        element.setAttribute("data-letter", char.toLowerCase());
        gameContainer.append(element);
     });
+}
+
+function getClue() {
+    let allSlots = document.querySelectorAll("#hangmanSlots [data-letter]");
+    let letters = [];
+    [...allSlots].forEach((slot) => {
+        if(slot.textContent !== slot.dataset.letter) {
+            letters.push(slot.dataset.letter);
+        }
+    });
+    if (letters.length) {
+        let randomLetter = letters[Math.floor(Math.random()*letters.length)];
+        let button = document.querySelector(`button[value=${randomLetter}]`);
+        button.click();
+        countdown();    
+    }
 }

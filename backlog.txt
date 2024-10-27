@@ -1,8 +1,7 @@
-- Få veta svaret?
-- tipsknapp ger en bokstav?
 - trist att få samma... -spara historik i localstorage?
 
-- alternativ är checkboxar - så kan man anv piltangenter och tabba förbi snabbt
+- Dela upp i "komponenter"
+
 - Kunna gissa på hela ordet
 - Kunna gissa på tangentbord - lyssnare på keydown
 
@@ -32,3 +31,7 @@ Vad är vad
 - Validera
 - Toggla input/presentation
 - Ut: Rätt el fel
+
+"Gömd bokstav"
+- Vilken bokstav
+- State
