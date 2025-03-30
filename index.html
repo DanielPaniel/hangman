@@ -23,9 +23,9 @@
             <path class="hangman--9" d="M34 17C38.4183 17 42 20.5817 42 25H38C38 22.7909 36.2091 21 34 21V17Z"/>
             <path class="hangman--10" d="M34 29C29.5817 29 26 32.5817 26 37H30C30 34.7909 31.7909 33 34 33V29Z"/>
             <path class="hangman--11" d="M34 29C38.4183 29 42 32.5817 42 37H38C38 34.7909 36.2091 33 34 33V29Z"/>
-        </svg>            
+        </svg>
+        <div id="hangmanResult"></div>            
     </div>
-    <div id="hangmanResult"></div>
     <div id="hangmanSlots"></div>
     <div id="hangmanKeyboard"></div>    
 
@@ -45,15 +45,16 @@
         <div>Död!</div>
     </template>
 
-    <button onclick="getClue();">Tips</button>
-    <button onclick="setup(selectWord());">Nytt ord</button>
-    <button onclick="openDialog();">Eget ord</button>
-
+    <div class="options">
+        <button id="clueButton" onclick="getClue();">Tips</button>
+        <button id="newButton" onclick="setup(selectWord());">Nytt ord</button>
+        <button id="customButton" onclick="openDialog();">Eget ord</button>
+    </div>
     <dialog>
         <form method="dialog">
             <input autocomplete="off" type="text" id="customWordInput" />
             <button type="submit" value="submit">Starta</button>
-            <button value="close">Avbryt</button>
+            <button formmethod="dialog" value="close">Avbryt</button>
         </form>
     </dialog>
 

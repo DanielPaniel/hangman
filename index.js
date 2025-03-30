@@ -5,17 +5,32 @@ let counter = 0;
 let isGameOver = false;
 
 const dialog = document.querySelector("dialog");
+let inputElement = dialog.querySelector("input");
+inputElement.addEventListener("keyup", () => {
+    setValidity(inputElement);
+});
 
 dialog.addEventListener("close", () => {
     if (dialog.returnValue === "submit") {
-        let value = dialog.querySelector("input").value;
-        if (customWordIsValid(value)) {
-            setup(value);
+        let inputElement = dialog.querySelector("input");
+        let word = inputElement.value.trim();
+        dialog.returnValue = "";    
+        if (customWordIsValid(word)) {
+            setup(word);
         } else {
-            dialog.showModal();
+           dialog.showModal();
         }
     }
 });
+
+function setValidity(inputElement) {
+    let word = inputElement.value.trim();
+    if (customWordIsValid(word)) {
+        inputElement.setCustomValidity("");
+    } else {
+        inputElement.setCustomValidity("Detta ord har tecken som inte får vara med!");
+    }
+}
 
 
 function customWordIsValid(word) {
@@ -53,13 +68,21 @@ function reset() {
     let hangmanParts = document.querySelectorAll(".hangman_man path");
     hangmanParts.forEach((part) => {
         part.style.display = "none";
+        part.style.color = `rgb(${getRandomInt(0,200)}, ${getRandomInt(0,200)}, ${getRandomInt(0,200)})`;
     });
     isGameOver = false;
 }
 
 
 function selectWord() {
-    return wordlist[Math.floor(Math.random() * wordlist.length)];
+    let randomInt = getRandomInt(0, wordlist.length-1);
+    return wordlist[randomInt];
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function createButtons(stringToArray) {
@@ -139,7 +162,8 @@ function getClue() {
         }
     });
     if (letters.length) {
-        let randomLetter = letters[Math.floor(Math.random()*letters.length)];
+        let randomInt = getRandomInt(0, letters.length-1);
+        let randomLetter = letters[randomInt];
         let button = document.querySelector(`button[value=${randomLetter}]`);
         button.click();
         countdown();    

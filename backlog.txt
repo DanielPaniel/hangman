@@ -1,3 +1,4 @@
+    - feedback vid fel
 - trist att få samma... -spara historik i localstorage?
 
 - Dela upp i "komponenter"
@@ -5,7 +6,8 @@
 - Kunna gissa på hela ordet
 - Kunna gissa på tangentbord - lyssnare på keydown
 
-
+- olika visualiseringar?
+- konfetti?
 
 
 Vad är vad
