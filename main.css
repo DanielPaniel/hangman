@@ -60,6 +60,18 @@ h1,
     margin: auto;
     padding: .25em .5em .1em;
     min-inline-size: 66%;
+
+    animation: 250ms cubic-bezier(.6,1.71,.77,.8) 500ms 1 both revealResult;
+}
+@keyframes revealResult {
+    0% {
+        transform: scale(2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 h1 {
     font-size: var(--hangman-font-size--s);
