@@ -1,4 +1,3 @@
-    - feedback vid fel
 - trist att få samma... -spara historik i localstorage?
 
 - Dela upp i "komponenter"
